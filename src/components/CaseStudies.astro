@@ -1,0 +1,76 @@
+---
+import { getCollection } from 'astro:content';
+
+const studies = await getCollection('case-studies');
+studies.sort((a, b) => a.slug.localeCompare(b.slug));
+---
+
+<section id="work" class="px-6 py-32 border-t border-border">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="flex items-center gap-3 mb-16">
+      <span class="block w-8 h-px bg-accent"></span>
+      <span class="font-mono text-xs text-muted tracking-widest uppercase">Case Studies</span>
+    </div>
+
+    <div class="space-y-0">
+      {studies.map((study, index) => (
+        <a
+          href={`/case-studies/${study.slug}`}
+          class="group block border-t border-border py-10 hover:bg-surface transition-colors px-0 hover:px-6 -mx-0 hover:-mx-6 duration-300"
+        >
+          <div class="flex flex-col lg:flex-row lg:items-start gap-6 lg:gap-12">
+
+            <!-- Number -->
+            <span class="font-mono text-5xl font-medium text-border group-hover:text-accent-dim transition-colors flex-shrink-0 leading-none select-none" style="color: var(--border);">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+
+            <!-- Content -->
+            <div class="flex-1">
+              <h3 class="font-display font-bold text-2xl text-ink mb-3 group-hover:text-accent transition-colors leading-snug">
+                {study.data.title}
+              </h3>
+              <p class="text-muted leading-relaxed max-w-2xl mb-4">
+                {study.data.description}
+              </p>
+              {study.data.tags && (
+                <div class="flex flex-wrap gap-2">
+                  {study.data.tags.map(tag => (
+                    <span class="font-mono text-xs text-muted border border-border px-2 py-1">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <!-- Arrow -->
+            <div class="flex-shrink-0 self-center">
+              <svg
+                class="w-6 h-6 text-border group-hover:text-accent group-hover:translate-x-1 transition-all duration-300"
+                viewBox="0 0 24 24" fill="none"
+              >
+                <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+
+          </div>
+        </a>
+      ))}
+
+      <!-- Placeholder for future studies -->
+      <div class="border-t border-border py-10 opacity-30">
+        <div class="flex flex-col lg:flex-row lg:items-start gap-6 lg:gap-12">
+          <span class="font-mono text-5xl font-medium leading-none select-none" style="color: var(--border);">
+            {String(studies.length + 1).padStart(2, '0')}
+          </span>
+          <div class="flex-1">
+            <p class="font-mono text-sm text-muted">More case studies coming soon...</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

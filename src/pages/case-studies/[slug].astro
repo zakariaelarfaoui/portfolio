@@ -1,0 +1,90 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+
+export async function getStaticPaths() {
+  const studies = await getCollection('case-studies');
+  return studies.map(study => ({
+    params: { slug: study.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const study = await getEntry('case-studies', slug);
+
+if (!study) {
+  return Astro.redirect('/');
+}
+
+const { Content } = await study.render();
+---
+
+<Layout title={`${study.data.title} — Zakaria El Arfaoui`} description={study.data.description}>
+  <Navbar />
+
+  <main class="px-6 pt-32 pb-24">
+    <div class="max-w-3xl mx-auto">
+
+      <!-- Back -->
+      <a
+        href="/#work"
+        class="inline-flex items-center gap-2 font-mono text-xs text-muted hover:text-ink transition-colors mb-12 tracking-wider uppercase"
+      >
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back to work
+      </a>
+
+      <!-- Header -->
+      <div class="mb-12 pb-12 border-b border-border">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="block w-8 h-px bg-accent"></span>
+          <span class="font-mono text-xs text-muted tracking-widest uppercase">Case Study</span>
+        </div>
+        <h1 class="font-display font-bold text-4xl lg:text-5xl text-ink leading-tight mb-6">
+          {study.data.title}
+        </h1>
+        <p class="text-muted text-lg leading-relaxed mb-6">
+          {study.data.description}
+        </p>
+        {study.data.tags && (
+          <div class="flex flex-wrap gap-2">
+            {study.data.tags.map(tag => (
+              <span class="font-mono text-xs text-accent border border-accent-dim bg-accent-dim px-3 py-1">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <!-- Content -->
+      <article class="prose prose-invert max-w-none">
+        <Content />
+      </article>
+
+      <!-- Footer nav -->
+      <div class="mt-16 pt-8 border-t border-border">
+        <a
+          href="/#work"
+          class="inline-flex items-center gap-2 font-mono text-xs text-muted hover:text-ink transition-colors tracking-wider uppercase"
+        >
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          All case studies
+        </a>
+      </div>
+
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .accent-dim {
+    background: var(--accent-dim, #1a2600);
+    border-color: rgba(184, 255, 71, 0.2);
+  }
+</style>

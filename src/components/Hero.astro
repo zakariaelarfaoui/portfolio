@@ -1,0 +1,75 @@
+---
+---
+
+<section class="relative min-h-screen flex flex-col justify-end px-6 pb-20 pt-32 overflow-hidden">
+
+  <!-- Background grid -->
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <div class="absolute inset-0" style="
+      background-image: linear-gradient(var(--border) 1px, transparent 1px),
+                        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 80px 80px;
+      opacity: 0.4;
+    "></div>
+    <!-- Fade the grid at the top and bottom -->
+    <div class="absolute inset-0" style="
+      background: radial-gradient(ellipse 80% 60% at 50% 50%, transparent 40%, var(--bg) 100%);
+    "></div>
+  </div>
+
+  <!-- Accent blob -->
+  <div class="absolute top-1/3 right-0 w-96 h-96 pointer-events-none" aria-hidden="true"
+    style="background: radial-gradient(circle, rgba(184,255,71,0.06) 0%, transparent 70%); transform: translate(20%, -20%);">
+  </div>
+
+  <div class="max-w-6xl mx-auto w-full relative">
+
+    <!-- Label -->
+    <div class="fade-up animate-delay-100 mb-8 flex items-center gap-3">
+      <span class="block w-8 h-px bg-accent"></span>
+      <span class="font-mono text-xs text-muted tracking-widest uppercase">Full Stack Developer</span>
+    </div>
+
+    <!-- Name -->
+    <h1 class="fade-up animate-delay-200 font-display font-extrabold leading-none tracking-tight mb-6" style="font-size: clamp(3.5rem, 10vw, 9rem);">
+      Zakaria<br/>
+      <span class="text-accent">El Arfaoui</span>
+    </h1>
+
+    <!-- Tagline -->
+    <p class="fade-up animate-delay-300 text-muted text-lg max-w-xl mb-10 leading-relaxed">
+      Building scalable backends, ERP systems, and multi-tenant SaaS platforms.
+      Based in <span class="text-ink">Martil, Morocco</span>.
+    </p>
+
+    <!-- CTAs -->
+    <div class="fade-up animate-delay-400 flex flex-wrap items-center gap-4">
+      <a href="#work"
+        class="inline-flex items-center gap-2 bg-accent text-bg font-display font-bold px-6 py-3 text-sm hover:bg-ink transition-colors">
+        View Case Studies
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="https://github.com/zakariaelarfaoui" target="_blank" rel="noopener"
+        class="inline-flex items-center gap-2 border border-border text-muted font-mono text-xs px-6 py-3 hover:text-ink hover:border-muted transition-colors tracking-wider">
+        GitHub ↗
+      </a>
+    </div>
+
+    <!-- Stats row -->
+    <div class="fade-up animate-delay-500 flex flex-wrap gap-10 mt-20 pt-8 border-t border-border">
+      <div>
+        <span class="block font-display font-bold text-3xl text-ink">3+</span>
+        <span class="font-mono text-xs text-muted tracking-wider uppercase mt-1 block">Years experience</span>
+      </div>
+      <div>
+        <span class="block font-display font-bold text-3xl text-ink">2</span>
+        <span class="font-mono text-xs text-muted tracking-wider uppercase mt-1 block">Companies</span>
+      </div>
+      <div>
+        <span class="block font-display font-bold text-3xl text-ink">10+</span>
+        <span class="font-mono text-xs text-muted tracking-wider uppercase mt-1 block">Tech stack</span>
+      </div>
+    </div>
+
+  </div>
+</section>

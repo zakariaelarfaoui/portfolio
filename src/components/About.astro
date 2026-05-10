@@ -1,0 +1,73 @@
+---
+const stack = [
+  { label: 'Languages', items: ['TypeScript', 'JavaScript', 'Python', 'PHP'] },
+  { label: 'Frontend', items: ['Angular', 'React', 'React Native', 'Next.js', 'Vue'] },
+  { label: 'Backend', items: ['Node.js', 'Express', 'Nest.js', 'Django', 'Django REST', 'Laravel'] },
+  { label: 'Databases', items: ['MongoDB', 'PostgreSQL', 'MySQL', 'Redis'] },
+  { label: 'Cloud & Infra', items: ['Azure', 'Docker', 'Nginx', 'Vercel', 'Supabase'] },
+  { label: 'Tools', items: ['Git', 'n8n', 'Celery', 'Socket.IO', 'Prisma'] },
+];
+---
+
+<section id="about" class="px-6 py-32 border-t border-border">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
+      <!-- Left: bio -->
+      <div>
+        <div class="flex items-center gap-3 mb-8">
+          <span class="block w-8 h-px bg-accent"></span>
+          <span class="font-mono text-xs text-muted tracking-widest uppercase">About</span>
+        </div>
+
+        <h2 class="font-display font-bold text-4xl text-ink mb-6 leading-tight">
+          Engineer who ships,<br/>leads, and learns.
+        </h2>
+
+        <div class="space-y-4 text-muted leading-relaxed">
+          <p>
+            Full Stack Developer with 3+ years building production systems — from large-scale ERP platforms
+            to multi-tenant SaaS backends with strict data isolation.
+          </p>
+          <p>
+            Led development teams, worked closely with product and management on architecture decisions,
+            and deployed scalable cloud infrastructure on Azure.
+          </p>
+          <p>
+            Comfortable across the full stack but strongest in backend architecture: auth systems,
+            real-time features, semantic search, and API design.
+          </p>
+        </div>
+
+        <div class="mt-8 flex flex-col gap-2">
+          <div class="flex items-center gap-3">
+            <span class="font-mono text-xs text-accent">LOC</span>
+            <span class="font-mono text-xs text-muted">Martil, Morocco (remote-friendly)</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="font-mono text-xs text-accent">LANG</span>
+            <span class="font-mono text-xs text-muted">Arabic · French · English</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: stack -->
+      <div class="space-y-6">
+        {stack.map(({ label, items }) => (
+          <div>
+            <span class="font-mono text-xs text-muted tracking-widest uppercase block mb-3">{label}</span>
+            <div class="flex flex-wrap gap-2">
+              {items.map(item => (
+                <span class="font-mono text-xs text-ink border border-border px-3 py-1.5 hover:border-accent hover:text-accent transition-colors cursor-default">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</section>
